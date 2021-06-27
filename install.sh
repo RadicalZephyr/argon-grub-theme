@@ -183,7 +183,7 @@ generateIcons() {
     pngFile="${svgFile##*/}"
     pngFile="${pngFile/.svg/.png}"
     if checkCommand inkscape; then
-      inkscape "-h" "$assetSize" "--export-filename=$buildDir/$pngFile" "$svgFile" >/dev/null 2>&1
+      inkscape "-h" "$assetSize" "--export-png=$buildDir/$pngFile" "$svgFile" >/dev/null 2>&1
     elif checkCommand convert; then
       output "warning" "Low quality: Inkscape not found, using imagemagick..."
       convert -scale "x$assetSize" -extent "x$assetSize" -background none "$svgFile" "$buildDir/$pngFile"
